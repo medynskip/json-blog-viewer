@@ -1,10 +1,8 @@
-const API_URL = 'https://jsonplaceholder.typicode.com/';
+const API_URL = "https://jsonplaceholder.typicode.com/";
 
-export async function fetchAPI<T>(
-  apiPath: string,
-): Promise<T> {
+export async function fetchAPI<T>(apiPath: string): Promise<T> {
   try {
-    const requestUrl = `${API_URL}/${apiPath}`
+    const requestUrl = `${API_URL}/${apiPath}`;
     const response = await fetch(requestUrl);
 
     const data = (await response.json()) as T;
