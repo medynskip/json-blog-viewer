@@ -1,7 +1,8 @@
 "use client";
 
-// import Link from "next/link";
 import { useState } from "react";
+
+import PostCard from "../PostCard/PostCard";
 
 import type { Post, User } from "@/types/types";
 
@@ -16,7 +17,7 @@ const PostsModule = (props: PostsModuleProps) => {
   const [userId, setUserId] = useState<number>();
 
   const postsToDisplay = userId
-    ? posts.filter((post) => post.userId === userId)
+    ? posts.filter((post) => userId === post.userId)
     : posts;
 
   const handleClick = (id: number) => {
@@ -29,27 +30,24 @@ const PostsModule = (props: PostsModuleProps) => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-4 mb-4">
-        {users.map((user) => (
-          <div
-            key={user.id}
-            onClick={() => {
-              handleClick(user.id);
-            }}
-            className="rounded-full py-2 px-4 mx-2 bg-slate-500 text-white"
-          >
-            {user.name}
-          </div>
-        ))}
+      <div className="mb-4 flex flex-wrap gap-4">
+        {users.map((user) => {
+          return (
+            <div
+              key={user.id}
+              onClick={() => {
+                handleClick(user.id);
+              }}
+              className="mx-2 cursor-pointer rounded-full bg-slate-500 px-4 py-2 text-white"
+            >
+              {user.name}
+            </div>
+          );
+        })}
       </div>
-      <div className="flex flex-wrap gap-4 mb-4">
+      <div className="mb-4 flex flex-wrap gap-4">
         {postsToDisplay.map((post) => (
-          <div
-            className="w-96 aspect-square p-2 rounded-md bg-white border hover:shadow-lg transition-all"
-            key={post.id}
-          >
-            {post.title}
-          </div>
+          <PostCard key={post.id} post={post} />
         ))}
       </div>
     </>

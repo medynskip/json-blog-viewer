@@ -6,7 +6,7 @@ export interface Post {
 }
 
 export interface User {
-  id: 1;
+  id: number;
   name: string;
   username: string;
   email: string;
@@ -15,10 +15,6 @@ export interface User {
     suite: string;
     city: string;
     zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
   };
   phone: string;
   website: string;

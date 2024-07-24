@@ -4,8 +4,9 @@ module.exports = {
     "prettier",
     "next",
     "next/core-web-vitals",
+    "plugin:tailwindcss/recommended",
   ],
-  plugins: ["prettier", "@stylistic"],
+  plugins: ["prettier", "@stylistic", "tailwindcss"],
   parserOptions: {
     project: "**/tsconfig.json",
   },
