@@ -24,3 +24,10 @@ export interface User {
     bs: string;
   };
 }
+
+export interface Comment {
+  id: number;
+  email: string;
+  name: string;
+  body: string;
+}
